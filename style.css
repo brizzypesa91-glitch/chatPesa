@@ -1,0 +1,2139 @@
+/* =========================================================
+   LUGHAPAY — PREMIUM MOBILE UI REDESIGN
+   UI ONLY: existing HTML IDs/classes and JavaScript hooks are preserved.
+   ========================================================= */
+
+:root {
+  --bg: #050b16;
+  --bg-soft: #081225;
+  --panel: rgba(13, 25, 47, 0.82);
+  --panel-2: rgba(15, 29, 53, 0.94);
+  --line: rgba(91, 137, 205, 0.20);
+  --line-strong: rgba(0, 174, 255, 0.38);
+  --text: #f5f8ff;
+  --muted: #91a2bc;
+  --blue: #09a9ff;
+  --cyan: #18d7ff;
+  --green: #00f58a;
+  --green-2: #00cf78;
+  --gold: #ffc21a;
+  --danger: #ff5c6c;
+  --shadow: 0 18px 55px rgba(0, 0, 0, 0.42);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html {
+  min-height: 100%;
+  background: var(--bg);
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% -8%, rgba(0, 174, 255, 0.15), transparent 34%),
+    radial-gradient(circle at 100% 30%, rgba(0, 255, 136, 0.055), transparent 26%),
+    linear-gradient(180deg, #07101f 0%, var(--bg) 45%, #030812 100%);
+  color: var(--text);
+  padding: 18px 12px 30px;
+  display: flex;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.012) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.012) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+  z-index: -1;
+}
+
+button,
+a,
+input,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+.app-container {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 2px 0 32px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.lughapay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 5px 4px;
+  width: 100%;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.logo-circle {
+  width: 50px;
+  height: 50px;
+  flex: 0 0 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #07101f;
+  background: linear-gradient(145deg, #ffffff 5%, #dbe8f8 100%);
+  border: 1px solid rgba(255,255,255,0.7);
+  box-shadow: 0 0 0 5px rgba(255,255,255,0.025), 0 10px 30px rgba(0,0,0,0.35);
+}
+
+.brand-text {
+  min-width: 0;
+}
+
+.brand-text h2 {
+  font-size: 21px;
+  font-weight: 850;
+  letter-spacing: -0.5px;
+  line-height: 1.05;
+  color: #fff;
+}
+
+.brand-text h2::after {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-left: 6px;
+  margin-bottom: 2px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 12px rgba(0,245,138,0.8);
+}
+
+.brand-text p {
+  margin-top: 4px;
+  color: #8fa2bf;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-circle {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(137,169,216,0.18);
+  background: rgba(255,255,255,0.035);
+  color: #f6f9ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.035);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease;
+}
+
+.icon-circle:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0,210,255,0.42);
+  background: rgba(0,174,255,0.08);
+}
+
+.notification-dot {
+  position: absolute;
+  top: 8px;
+  right: 9px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 9px rgba(255,255,255,0.85);
+}
+
+/* =========================================================
+   HERO / WELCOME PANEL
+   ========================================================= */
+
+.header-banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 220px;
+  padding: 30px 24px 24px;
+  border-radius: 28px;
+  border: 1px solid rgba(95,142,210,0.24);
+  background:
+    radial-gradient(circle at 85% 45%, rgba(0,173,255,0.13), transparent 24%),
+    radial-gradient(circle at 92% 55%, rgba(0,255,136,0.06), transparent 20%),
+    linear-gradient(145deg, rgba(19,35,64,0.98), rgba(9,20,39,0.98));
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.035);
+  text-align: left;
+}
+
+.header-banner::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 150px;
+  height: 150px;
+  right: -38px;
+  top: 28px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.55) 0 1.5%, transparent 2%),
+    radial-gradient(circle at 62% 50%, rgba(0,220,255,.35), transparent 55%),
+    linear-gradient(145deg, rgba(20,107,196,.72), rgba(12,33,80,.96));
+  border: 1px solid rgba(73,194,255,.4);
+  box-shadow: 0 0 45px rgba(0,174,255,.22), inset -15px -15px 30px rgba(0,0,0,.28);
+  opacity: .95;
+}
+
+.header-banner::after {
+  content: "💬";
+  position: absolute;
+  z-index: -1;
+  right: 25px;
+  top: 79px;
+  width: 58px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 17px;
+  background: linear-gradient(145deg, #15baff, #086cf2);
+  border: 1px solid rgba(255,255,255,.2);
+  box-shadow: 0 10px 28px rgba(0,125,255,.35);
+  font-size: 24px;
+}
+
+.header-banner h2 {
+  max-width: 72%;
+  font-size: clamp(25px, 7vw, 34px);
+  line-height: 1.05;
+  font-weight: 900;
+  letter-spacing: -1px;
+}
+
+.header-banner h2 span {
+  color: var(--green);
+  text-shadow: 0 0 22px rgba(0,245,138,.18);
+}
+
+.header-banner p {
+  position: relative;
+  z-index: 2;
+  max-width: 78%;
+  margin: 13px 0 22px;
+  color: #a5b6cc;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.btn-customer-care {
+  position: relative;
+  z-index: 3;
+  width: min(100%, 390px);
+  min-height: 48px;
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 28px;
+  color: #fff;
+  background: linear-gradient(100deg, #058cf3, #12c9ef);
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 0 26px rgba(0,174,255,.28), inset 0 1px 0 rgba(255,255,255,.18);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn-customer-care:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 34px rgba(0,174,255,.44), inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+/* =========================================================
+   BALANCE CARDS
+   ========================================================= */
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  min-height: 152px;
+  padding: 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(83,128,193,.23);
+  background: linear-gradient(145deg, rgba(16,31,57,.98), rgba(7,19,36,.98));
+  box-shadow: 0 14px 38px rgba(0,0,0,.27), inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  right: -48px;
+  bottom: -48px;
+  border-radius: 50%;
+  background: rgba(0,174,255,.13);
+  filter: blur(3px);
+}
+
+.card:nth-child(2)::after {
+  background: rgba(0,245,138,.12);
+}
+
+.card-title {
+  font-size: 11px;
+  color: var(--cyan);
+  font-weight: 850;
+  letter-spacing: .2px;
+  margin-bottom: 8px;
+}
+
+.card:nth-child(2) .card-title {
+  color: var(--green);
+}
+
+.card-amount {
+  font-size: clamp(22px, 6vw, 30px);
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: -0.8px;
+  margin-bottom: 13px;
+  color: #fff;
+}
+
+.card-desc {
+  min-height: 30px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: #71839d;
+}
+
+.btn-action {
+  width: 100%;
+  min-height: 40px;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 22px;
+  color: #fff;
+  background: linear-gradient(100deg, #087cf1, #13c6f0);
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+  box-shadow: 0 0 22px rgba(0,163,224,.24);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn-action:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 28px rgba(0,174,255,.4);
+}
+
+/* =========================================================
+   PRIMARY CTA
+   ========================================================= */
+
+.btn-register-main {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  text-decoration: none;
+  min-height: 54px;
+  padding: 15px 18px;
+  border-radius: 29px;
+  border: 1px solid rgba(255,255,255,.1);
+  color: #03140e;
+  background: linear-gradient(100deg, #00c879, #00f58a);
+  font-size: 16px;
+  font-weight: 900;
+  box-shadow: 0 0 30px rgba(0,245,138,.22), inset 0 1px 0 rgba(255,255,255,.22);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.btn-register-main::after {
+  content: "›";
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-52%);
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.btn-register-main:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 38px rgba(0,245,138,.38), inset 0 1px 0 rgba(255,255,255,.25);
+}
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+
+.section-title {
+  padding: 3px 2px 0;
+}
+
+.section-title h3 {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: -.4px;
+}
+
+.section-title p {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #8092ac;
+}
+
+/* =========================================================
+   CHAT PARTNER LIST
+   ========================================================= */
+
+.wazungu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 560px;
+  overflow-y: auto;
+  padding: 1px 2px 2px 0;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.wazungu-list::-webkit-scrollbar {
+  display: none;
+}
+
+.mzungu-card {
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+  border-radius: 21px;
+  border: 1px solid rgba(78,122,186,.22);
+  background: linear-gradient(145deg, rgba(14,28,52,.96), rgba(7,19,36,.98));
+  box-shadow: 0 12px 32px rgba(0,0,0,.23), inset 0 1px 0 rgba(255,255,255,.025);
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.mzungu-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0,220,255,.28);
+  box-shadow: 0 18px 38px rgba(0,0,0,.28), 0 0 24px rgba(0,174,255,.06);
+}
+
+.mzungu-header {
+  display: flex;
+  gap: 13px;
+  align-items: center;
+  margin-bottom: 11px;
+}
+
+.avatar {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(105,183,255,.32);
+  box-shadow: 0 0 0 4px rgba(0,174,255,.045), 0 8px 22px rgba(0,0,0,.35);
+}
+
+.mzungu-info {
+  min-width: 0;
+}
+
+.mzungu-info h4 {
+  font-size: 16px;
+  line-height: 1.15;
+  font-weight: 850;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mzungu-info .meta {
+  margin-top: 4px;
+  font-size: 11px;
+  color: #92a4bd;
+}
+
+.mzungu-info .meta::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-left: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 8px rgba(0,245,138,.75);
+}
+
+.mzungu-info .price {
+  margin-top: 4px;
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+.mzungu-bio {
+  min-height: 34px;
+  margin-bottom: 13px;
+  color: #8fa1bb;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.btn-chat {
+  width: 100%;
+  min-height: 43px;
+  padding: 9px 14px;
+  border-radius: 24px;
+  border: 1.5px solid var(--green);
+  color: var(--green);
+  background: rgba(0,245,138,.035);
+  font-size: 13px;
+  font-weight: 850;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(0,245,138,.12), inset 0 0 18px rgba(0,245,138,.025);
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.btn-chat:hover {
+  transform: translateY(-1px);
+  background: rgba(0,245,138,.07);
+  box-shadow: 0 0 27px rgba(0,245,138,.26);
+}
+
+.btn-chat.completed {
+  background: rgba(20,31,47,.8);
+  color: #718197;
+  border-color: #2c3c52;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   SUPPORT
+   ========================================================= */
+
+.support-section-card,
+.reviews-section-card,
+.extra-card {
+  background: linear-gradient(145deg, rgba(10,24,45,.96), rgba(6,16,30,.98));
+  border: 1px solid rgba(77,121,182,.21);
+  border-radius: 23px;
+  box-shadow: 0 15px 38px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.025);
+}
+
+.support-section-card {
+  padding: 21px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.support-header h3,
+.reviews-header-text h3 {
+  font-size: 20px;
+  line-height: 1.2;
+  font-weight: 900;
+  letter-spacing: -.35px;
+}
+
+.support-header p,
+.reviews-header-text p {
+  margin-top: 5px;
+  color: #8294ae;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.support-buttons-container {
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.support-btn {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 62px;
+  padding: 13px 16px;
+  border-radius: 18px;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.support-btn:active {
+  transform: scale(.985);
+}
+
+.btn-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: rgba(255,255,255,.05);
+}
+
+.btn-text-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.whatsapp-btn {
+  background: linear-gradient(135deg, rgba(0,211,121,.18), rgba(0,211,121,.055));
+  border: 1px solid rgba(0,245,138,.28);
+  color: #fff;
+  box-shadow: 0 0 22px rgba(0,245,138,.08);
+}
+
+.whatsapp-btn .btn-icon {
+  color: var(--green);
+}
+
+.whatsapp-btn .btn-title {
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.whatsapp-btn .btn-subtext,
+.group-btn .btn-subtext {
+  font-size: 11px;
+  color: #8294ae;
+}
+
+.group-btn {
+  background: rgba(93,54,137,.10);
+  border: 1px solid rgba(153,95,226,.25);
+  color: #fff;
+}
+
+.group-btn .btn-icon,
+.group-btn .btn-title {
+  color: #b98aff;
+}
+
+.group-btn .btn-title {
+  font-size: 15px;
+  font-weight: 850;
+}
+
+/* =========================================================
+   TRANSACTIONS
+   ========================================================= */
+
+.extra-card {
+  padding: 17px;
+}
+
+.extra-card h4 {
+  margin-bottom: 12px;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.scroll-box {
+  height: 154px;
+  overflow: hidden;
+  position: relative;
+  border-radius: 15px;
+}
+
+.scroll-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: autoScroll 18s linear infinite;
+}
+
+@keyframes autoScroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
+}
+
+.transaction-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 13px;
+  background: rgba(3,12,24,.78);
+  border: 1px solid rgba(73,115,174,.13);
+}
+
+.tx-name {
+  color: #eaf1fb;
+  font-size: 11px;
+}
+
+.tx-time {
+  margin-top: 2px;
+  color: #667993;
+  font-size: 9px;
+}
+
+.tx-amount {
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 850;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   REVIEWS
+   ========================================================= */
+
+.reviews-section-card {
+  padding: 21px 17px;
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.reviews-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.reviews-header-text {
+  min-width: 0;
+}
+
+.rating-badge-box {
+  flex: 0 0 auto;
+  min-width: 92px;
+  padding: 9px 10px;
+  border-radius: 17px;
+  text-align: center;
+  background: rgba(255,194,26,.055);
+  border: 1px solid rgba(255,194,26,.15);
+}
+
+.rating-score {
+  font-size: 21px;
+  line-height: 1;
+  font-weight: 900;
+  color: var(--gold);
+}
+
+.rating-stars-badge {
+  margin-top: 4px;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.rating-count {
+  margin-top: 3px;
+  color: #687b96;
+  font-size: 9px;
+}
+
+.reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.review-item-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 13px;
+  border-radius: 16px;
+  background: rgba(3,12,24,.72);
+  border: 1px solid rgba(73,115,174,.14);
+}
+
+.review-avatar-circle {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #203654, #13243d);
+  border: 1px solid rgba(111,170,235,.15);
+  color: #eef5ff;
+  font-size: 15px;
+  font-weight: 850;
+}
+
+.review-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.review-top-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 7px;
+}
+
+.user-info-text {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-name {
+  color: #f4f7fc;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.user-location {
+  color: #667993;
+  font-size: 11px;
+}
+
+.star-rating {
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: .8px;
+  flex-shrink: 0;
+}
+
+.star-empty {
+  color: #29384e;
+}
+
+.review-text {
+  color: #8ea1bb;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+/* =========================================================
+   MODALS
+   ========================================================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(1,6,14,.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  z-index: 1000;
+}
+
+.modal-card,
+.chat-room-card {
+  width: 100%;
+  border: 1px solid rgba(80,132,203,.28);
+  background: linear-gradient(145deg, rgba(15,30,55,.98), rgba(6,16,31,.99));
+  box-shadow: 0 30px 90px rgba(0,0,0,.58), 0 0 35px rgba(0,174,255,.08);
+}
+
+.modal-card {
+  position: relative;
+  max-width: 410px;
+  padding: 21px;
+  border-radius: 24px;
+}
+
+.close-btn {
+  position: absolute;
+  top: 13px;
+  right: 13px;
+  width: 34px;
+  height: 34px;
+  border: 1px solid rgba(125,160,205,.13);
+  border-radius: 50%;
+  background: rgba(255,255,255,.035);
+  color: #9aabc1;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.time-modal-card {
+  max-height: 90vh;
+  overflow-y: auto;
+  text-align: center;
+  padding-top: 27px;
+}
+
+.modal-profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.modal-avatar-img {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 9px;
+  border: 2px solid rgba(0,213,255,.35);
+  box-shadow: 0 0 0 5px rgba(0,174,255,.05), 0 12px 30px rgba(0,0,0,.35);
+}
+
+.modal-profile-header h3 {
+  font-size: 19px;
+  font-weight: 900;
+}
+
+.modal-profile-header p,
+.modal-instruction {
+  color: #8fa1ba;
+  font-size: 12px;
+}
+
+.modal-profile-header p {
+  margin-top: 3px;
+  margin-bottom: 8px;
+}
+
+.time-options {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.time-option-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  border: 1px solid rgba(79,126,190,.2);
+  background: rgba(4,14,28,.8);
+  color: #f4f7fc;
+  font-size: 13px;
+  font-weight: 750;
+  cursor: pointer;
+  transition: border-color .2s ease, transform .2s ease, background .2s ease;
+}
+
+.time-option-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,194,26,.4);
+  background: rgba(255,194,26,.045);
+}
+
+.gold-text {
+  color: var(--gold);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+/* =========================================================
+   CHAT ROOM
+   ========================================================= */
+
+.chat-room-card {
+  max-width: 470px;
+  height: min(690px, 92vh);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border-radius: 26px;
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 16px;
+  background: rgba(18,34,61,.9);
+  border-bottom: 1px solid rgba(84,130,194,.17);
+}
+
+.chat-user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.avatar-small {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(0,213,255,.3);
+}
+
+.chat-user-info h4 {
+  font-size: 14px;
+  font-weight: 850;
+}
+
+.online-status {
+  display: inline-block;
+  margin-top: 2px;
+  color: var(--green);
+  font-size: 10px;
+}
+
+.progress-container {
+  width: 100%;
+  height: 5px;
+  background: #06101f;
+}
+
+.progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #00c879, #13d7ff);
+  box-shadow: 0 0 14px rgba(0,213,255,.35);
+  transition: width 1s linear;
+}
+
+.timer-text {
+  padding: 7px;
+  background: #071221;
+  color: #91a3bd;
+  text-align: center;
+  font-size: 10px;
+}
+
+.chat-messages {
+  flex: 1;
+  padding: 17px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background:
+    radial-gradient(circle at 80% 0%, rgba(0,174,255,.07), transparent 25%),
+    #050d1a;
+}
+
+.msg {
+  max-width: 78%;
+  padding: 10px 13px;
+  border-radius: 16px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.msg.received {
+  align-self: flex-start;
+  color: #f5f8ff;
+  background: #12233d;
+  border: 1px solid rgba(80,125,190,.13);
+  border-bottom-left-radius: 4px;
+}
+
+.msg.sent {
+  align-self: flex-end;
+  color: #03140e;
+  background: linear-gradient(135deg, #00c879, #00f58a);
+  border-bottom-right-radius: 4px;
+  font-weight: 700;
+}
+
+.chat-input-area {
+  display: flex;
+  gap: 8px;
+  padding: 11px;
+  background: rgba(13,28,50,.98);
+  border-top: 1px solid rgba(84,130,194,.17);
+}
+
+.chat-input-area input {
+  flex: 1;
+  min-width: 0;
+  padding: 11px 14px;
+  border: 1px solid rgba(78,124,188,.22);
+  border-radius: 22px;
+  outline: none;
+  background: #06101f;
+  color: #fff;
+  font-size: 12px;
+}
+
+.chat-input-area input:focus {
+  border-color: rgba(0,210,255,.45);
+  box-shadow: 0 0 18px rgba(0,174,255,.08);
+}
+
+.chat-input-area button {
+  border: 0;
+  padding: 0 17px;
+  border-radius: 22px;
+  background: linear-gradient(100deg, #00c879, #00f58a);
+  color: #03140e;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+/* =========================================================
+   REWARD / WITHDRAW / ERROR MODALS
+   ========================================================= */
+
+.reward-card-new {
+  max-width: 420px;
+  text-align: center;
+  padding: 26px 21px 21px;
+}
+
+.reward-icon-header {
+  font-size: 46px;
+  margin-bottom: 5px;
+}
+
+.reward-title-main {
+  font-size: 23px;
+  font-weight: 900;
+}
+
+.reward-sub-text {
+  margin: 7px 0 18px;
+  color: var(--gold);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.reward-info-box {
+  margin-bottom: 18px;
+  padding: 15px;
+  border-radius: 17px;
+  border: 1px solid rgba(255,194,26,.14);
+  background: rgba(255,194,26,.035);
+  color: #bdc9d9;
+  text-align: left;
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.btn-activate-account {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  border-radius: 27px;
+  text-align: center;
+  text-decoration: none;
+  color: #03140e;
+  background: linear-gradient(100deg, #00c879, #00f58a);
+  font-size: 13px;
+  font-weight: 900;
+  box-shadow: 0 0 25px rgba(0,245,138,.2);
+}
+
+.form-group {
+  margin-bottom: 12px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #91a3bd;
+  font-size: 11px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 11px 12px;
+  border: 1px solid rgba(78,124,188,.22);
+  border-radius: 12px;
+  outline: none;
+  background: #06101f;
+  color: #fff;
+  font-size: 12px;
+}
+
+.form-control:focus {
+  border-color: rgba(0,210,255,.42);
+}
+
+.btn-submit {
+  width: 100%;
+  margin-top: 4px;
+  padding: 12px;
+  border: 0;
+  border-radius: 23px;
+  background: linear-gradient(100deg, #00c879, #00f58a);
+  color: #03140e;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.error-card {
+  text-align: center;
+  border-color: rgba(255,92,108,.35);
+}
+
+.error-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 11px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--danger);
+  background: rgba(255,92,108,.07);
+  border: 2px solid rgba(255,92,108,.5);
+  font-size: 23px;
+  font-weight: 900;
+  box-shadow: 0 0 25px rgba(255,92,108,.1);
+}
+
+/* =========================================================
+   FLOATING PAYMENT NOTIFICATION
+   ========================================================= */
+
+.floating-notification {
+  position: fixed;
+  top: -110px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 24px);
+  max-width: 450px;
+  padding: 11px 14px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border-radius: 21px;
+  border: 1px solid rgba(99,148,216,.28);
+  background: rgba(9,20,39,.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 20px 50px rgba(0,0,0,.48), 0 0 25px rgba(0,174,255,.08);
+  z-index: 9999;
+  transition: top .45s cubic-bezier(.175,.885,.32,1.275);
+}
+
+.floating-notification.show {
+  top: 16px;
+}
+
+.notif-icon-box {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(0,174,255,.1);
+  border: 1px solid rgba(0,210,255,.2);
+  color: var(--cyan);
+  font-size: 17px;
+}
+
+.notif-content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.notif-title {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notif-desc {
+  color: #8496af;
+  font-size: 10px;
+}
+
+.notif-desc span {
+  color: var(--gold);
+  font-weight: 850;
+}
+
+.notif-close {
+  padding: 4px;
+  border: 0;
+  background: transparent;
+  color: #6f819c;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* Existing compatibility classes / older hooks */
+.neon-glow-btn {
+  position: relative;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  box-shadow: 0 0 16px rgba(0,245,138,.22);
+  transition: box-shadow .3s ease, transform .2s ease;
+}
+
+.neon-glow-btn:hover {
+  box-shadow: 0 0 25px rgba(0,245,138,.45);
+  transform: translateY(-2px);
+}
+
+.btn-whatsapp,
+.btn-join-group {
+  box-shadow: 0 0 18px rgba(0,245,138,.18);
+}
+
+.pulse-glow {
+  animation: softNeonPulse 2.5s infinite ease-in-out;
+}
+
+@keyframes softNeonPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(0,245,138,.18); }
+  50% { box-shadow: 0 0 24px rgba(0,245,138,.38); }
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 390px) {
+  body {
+    padding: 12px 10px 24px;
+  }
+
+  .app-container {
+    gap: 13px;
+  }
+
+  .header-banner {
+    min-height: 205px;
+    padding: 25px 19px 20px;
+  }
+
+  .header-banner h2 {
+    max-width: 76%;
+    font-size: 24px;
+  }
+
+  .header-banner p {
+    max-width: 80%;
+    font-size: 12px;
+  }
+
+  .header-banner::before {
+    width: 125px;
+    height: 125px;
+    right: -37px;
+  }
+
+  .header-banner::after {
+    right: 14px;
+    top: 66px;
+    width: 49px;
+    height: 38px;
+    font-size: 20px;
+  }
+
+  .card {
+    padding: 15px;
+    min-height: 145px;
+  }
+
+  .card-amount {
+    font-size: 22px;
+  }
+
+  .rating-badge-box {
+    min-width: 82px;
+    padding: 8px 7px;
+  }
+}
+
+@media (max-width: 330px) {
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .header-right {
+    gap: 5px;
+  }
+
+  .icon-circle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .brand-text h2 {
+    font-size: 18px;
+  }
+}
+
+/* Safe-area support for modern phones */
+@supports (padding: max(0px)) {
+  body {
+    padding-bottom: max(30px, env(safe-area-inset-bottom));
+  }
+}
+
+/* =========================================================
+   LUGHAPAY - FULL WAZUNGU PROFILE CARDS
+   Usibadilishe HTML wala JavaScript
+   ========================================================= */
+
+/* Ondoa kukatwa kwa list nzima */
+.wazungu-list {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 18px !important;
+
+  max-height: none !important;
+  height: auto !important;
+
+  overflow: visible !important;
+  padding: 4px 2px 20px 2px !important;
+}
+
+/* Kila profile iwe card kamili */
+.mzungu-card {
+  position: relative !important;
+
+  width: 100% !important;
+  height: auto !important;
+  min-height: 220px !important;
+
+  overflow: visible !important;
+
+  padding: 22px !important;
+
+  border-radius: 24px !important;
+
+  border: 1px solid rgba(65, 125, 190, 0.30) !important;
+
+  background:
+    linear-gradient(
+      145deg,
+      #121d34 0%,
+      #0c172b 100%
+    ) !important;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255,255,255,0.03) !important;
+
+  box-sizing: border-box !important;
+
+  flex-shrink: 0 !important;
+}
+
+/* Header ya profile */
+.mzungu-header {
+  display: flex !important;
+  align-items: center !important;
+
+  gap: 16px !important;
+
+  width: 100% !important;
+
+  margin-bottom: 16px !important;
+}
+
+/* Picha iwe FULL */
+.mzungu-card .avatar {
+  width: 76px !important;
+  height: 76px !important;
+
+  min-width: 76px !important;
+  min-height: 76px !important;
+
+  flex: 0 0 76px !important;
+
+  border-radius: 50% !important;
+
+  object-fit: cover !important;
+
+  display: block !important;
+
+  border: 2px solid rgba(0, 210, 255, 0.45) !important;
+
+  box-shadow:
+    0 0 0 5px rgba(0, 174, 255, 0.05),
+    0 8px 25px rgba(0,0,0,0.35) !important;
+}
+
+/* Sehemu ya details */
+.mzungu-info {
+  min-width: 0 !important;
+  flex: 1 !important;
+}
+
+/* Jina */
+.mzungu-info h4 {
+  margin: 0 !important;
+
+  font-size: 20px !important;
+
+  line-height: 1.25 !important;
+
+  font-weight: 800 !important;
+
+  color: #ffffff !important;
+
+  white-space: normal !important;
+
+  overflow: visible !important;
+
+  text-overflow: clip !important;
+}
+
+/* Country + online */
+.mzungu-info .meta {
+  margin-top: 6px !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.4 !important;
+
+  color: #a4b2c7 !important;
+
+  white-space: normal !important;
+}
+
+/* Dot ya online */
+.mzungu-info .meta::after {
+  width: 7px !important;
+  height: 7px !important;
+
+  margin-left: 6px !important;
+
+  vertical-align: middle !important;
+}
+
+/* Zawadi */
+.mzungu-info .price {
+  margin-top: 6px !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.4 !important;
+
+  color: #ffbd19 !important;
+
+  font-weight: 800 !important;
+
+  white-space: normal !important;
+}
+
+/* BIO - usikate maandishi */
+.mzungu-bio {
+  width: 100% !important;
+
+  min-height: 0 !important;
+
+  height: auto !important;
+
+  margin: 0 0 18px 0 !important;
+
+  color: #a5b3c7 !important;
+
+  font-size: 14px !important;
+
+  line-height: 1.6 !important;
+
+  white-space: normal !important;
+
+  overflow: visible !important;
+
+  word-wrap: break-word !important;
+
+  overflow-wrap: anywhere !important;
+}
+
+/* Button ya Anza Chat */
+.mzungu-card .btn-chat {
+  display: block !important;
+
+  width: 100% !important;
+
+  min-height: 52px !important;
+
+  height: auto !important;
+
+  padding: 12px 18px !important;
+
+  margin: 0 !important;
+
+  border-radius: 30px !important;
+
+  border: 2px solid #00f58a !important;
+
+  background: rgba(0,245,138,0.035) !important;
+
+  color: #00f58a !important;
+
+  font-size: 16px !important;
+
+  font-weight: 800 !important;
+
+  white-space: normal !important;
+
+  overflow: visible !important;
+
+  box-shadow:
+    0 0 20px rgba(0,245,138,0.16),
+    inset 0 0 15px rgba(0,245,138,0.025) !important;
+
+  cursor: pointer !important;
+}
+
+/* Hover */
+.mzungu-card .btn-chat:hover {
+  background: rgba(0,245,138,0.08) !important;
+
+  box-shadow:
+    0 0 28px rgba(0,245,138,0.28) !important;
+
+  transform: translateY(-1px) !important;
+}
+
+/* Completed */
+.mzungu-card .btn-chat.completed {
+  border-color: #45536a !important;
+
+  color: #8491a5 !important;
+
+  background: #151f31 !important;
+
+  box-shadow: none !important;
+}
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .wazungu-list {
+    gap: 16px !important;
+  }
+
+  .mzungu-card {
+    min-height: 0 !important;
+
+    padding: 18px !important;
+
+    border-radius: 22px !important;
+  }
+
+  .mzungu-header {
+    gap: 14px !important;
+
+    align-items: center !important;
+
+    margin-bottom: 15px !important;
+  }
+
+  .mzungu-card .avatar {
+    width: 68px !important;
+    height: 68px !important;
+
+    min-width: 68px !important;
+    min-height: 68px !important;
+
+    flex-basis: 68px !important;
+  }
+
+  .mzungu-info h4 {
+    font-size: 18px !important;
+
+    line-height: 1.3 !important;
+  }
+
+  .mzungu-info .meta {
+    font-size: 13px !important;
+  }
+
+  .mzungu-info .price {
+    font-size: 13px !important;
+  }
+
+  .mzungu-bio {
+    font-size: 13px !important;
+
+    line-height: 1.55 !important;
+
+    margin-bottom: 16px !important;
+  }
+
+  .mzungu-card .btn-chat {
+    min-height: 50px !important;
+
+    font-size: 15px !important;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .mzungu-card {
+    padding: 15px !important;
+  }
+
+  .mzungu-card .avatar {
+    width: 60px !important;
+    height: 60px !important;
+
+    min-width: 60px !important;
+    min-height: 60px !important;
+
+    flex-basis: 60px !important;
+  }
+
+  .mzungu-info h4 {
+    font-size: 16px !important;
+  }
+
+  .mzungu-info .meta,
+  .mzungu-info .price {
+    font-size: 12px !important;
+  }
+
+  .mzungu-bio {
+    font-size: 12px !important;
+  }
+}
+
+/* =====================================================
+   LUGHAPAY HEADER / LOGO
+   ===================================================== */
+
+.lughapay-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 6px 18px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Logo ya duara */
+.logo-circle {
+  width: 50px !important;
+  height: 50px !important;
+  min-width: 50px !important;
+  min-height: 50px !important;
+
+  border-radius: 50% !important;
+
+  background: #ffffff !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  font-size: 25px !important;
+
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.45),
+    0 0 0 4px rgba(255,255,255,0.03) !important;
+
+  border: 1px solid rgba(255,255,255,0.25) !important;
+
+  flex-shrink: 0 !important;
+}
+
+/* Lugha Pay */
+.brand-text h2 {
+  margin: 0 !important;
+
+  color: #ffffff !important;
+
+  font-size: 21px !important;
+
+  font-weight: 850 !important;
+
+  line-height: 1.15 !important;
+
+  letter-spacing: -0.4px !important;
+}
+
+/* Kiswahili • Mapato */
+.brand-text p {
+  margin: 3px 0 0 !important;
+
+  color: #94a3b8 !important;
+
+  font-size: 13px !important;
+
+  line-height: 1.2 !important;
+}
+
+/* Icons upande wa kulia */
+.header-right {
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px !important;
+}
+
+.icon-circle {
+  width: 44px !important;
+  height: 44px !important;
+
+  border-radius: 50% !important;
+
+  background: rgba(255,255,255,0.045) !important;
+
+  border: 1px solid rgba(255,255,255,0.10) !important;
+
+  color: #ffffff !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  font-size: 19px !important;
+
+  position: relative !important;
+}
+
+/* Notification dot */
+.notification-dot {
+  position: absolute !important;
+
+  top: 8px !important;
+  right: 8px !important;
+
+  width: 7px !important;
+  height: 7px !important;
+
+  border-radius: 50% !important;
+
+  background: #ffffff !important;
+
+  box-shadow: 0 0 7px rgba(255,255,255,0.8);
+}
+
+/* =====================================================
+   FLOATING WHATSAPP CUSTOMER CARE
+   ===================================================== */
+
+.floating-whatsapp {
+  position: fixed;
+
+  right: 18px;
+  bottom: 20px;
+
+  height: 58px;
+  min-width: 58px;
+
+  padding: 0 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border-radius: 30px;
+
+  background: #20c968;
+
+  color: #ffffff;
+
+  text-decoration: none;
+
+  font-size: 14px;
+  font-weight: 800;
+
+  z-index: 99999;
+
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(32, 201, 104, 0.45);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+/* WhatsApp icon */
+.whatsapp-icon {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,0.18);
+
+  font-size: 20px;
+}
+
+/* Text */
+.whatsapp-label {
+  white-space: nowrap;
+}
+
+/* Hover / touch */
+.floating-whatsapp:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.4),
+    0 0 28px rgba(32, 201, 104, 0.65);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+  .floating-whatsapp {
+    right: 15px;
+    bottom: 18px;
+
+    width: 58px;
+    min-width: 58px;
+
+    height: 58px;
+
+    padding: 0;
+
+    border-radius: 50%;
+  }
+
+  .whatsapp-label {
+    display: none;
+  }
+
+  .whatsapp-icon {
+    width: 34px;
+    height: 34px;
+
+    background: transparent;
+
+    font-size: 25px;
+  }
+}
+
+/* =========================================================
+   LUGHAPAY — PURPLE DARK THEME + GREEN PRIMARY BUTTONS
+   Added as a UI override: functionality and JS hooks unchanged.
+   ========================================================= */
+
+:root {
+  --bg: #070312;
+  --bg-soft: #0d071c;
+  --panel: rgba(18, 12, 38, 0.90);
+  --panel-2: rgba(23, 15, 47, 0.96);
+  --line: rgba(151, 105, 255, 0.18);
+  --line-strong: rgba(139, 92, 246, 0.38);
+  --text: #f7f4ff;
+  --muted: #aaa1bd;
+  --blue: #7557ff;
+  --cyan: #9b7cff;
+  --green: #19e66f;
+  --green-2: #10c95d;
+}
+
+html {
+  background: #070312;
+}
+
+body {
+  background:
+    radial-gradient(circle at 50% -8%, rgba(124, 58, 237, 0.20), transparent 34%),
+    radial-gradient(circle at 100% 35%, rgba(34, 197, 94, 0.055), transparent 25%),
+    linear-gradient(180deg, #0b0519 0%, #070312 48%, #04020b 100%);
+}
+
+/* Header */
+.logo-circle {
+  background: linear-gradient(145deg, #8b5cf6 0%, #4c1d95 100%) !important;
+  color: #fff !important;
+  border-color: rgba(196,181,253,.35) !important;
+  box-shadow: 0 0 0 5px rgba(139,92,246,.08), 0 10px 30px rgba(76,29,149,.35) !important;
+}
+
+.brand-text h2 {
+  color: #fff;
+}
+
+/* Hero */
+.header-banner {
+  border-color: rgba(139,92,246,.28);
+  background:
+    radial-gradient(circle at 85% 45%, rgba(124,58,237,.18), transparent 24%),
+    radial-gradient(circle at 92% 55%, rgba(34,197,94,.055), transparent 20%),
+    linear-gradient(145deg, rgba(25,16,51,.98), rgba(10,6,24,.98));
+  box-shadow: 0 18px 55px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.035);
+}
+
+.header-banner::before {
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255,255,255,.55) 0 1.5%, transparent 2%),
+    radial-gradient(circle at 62% 50%, rgba(167,139,250,.38), transparent 55%),
+    linear-gradient(145deg, rgba(109,40,217,.76), rgba(30,15,70,.98));
+  border-color: rgba(167,139,250,.38);
+  box-shadow: 0 0 45px rgba(124,58,237,.24), inset -15px -15px 30px rgba(0,0,0,.28);
+}
+
+.header-banner::after {
+  background: linear-gradient(145deg, #8b5cf6, #5b21b6);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 10px 28px rgba(109,40,217,.38);
+}
+
+/* ONLY these main action buttons are green */
+.btn-customer-care,
+.btn-action,
+.btn-register-main {
+  background: linear-gradient(100deg, #12c85d, #20e879) !important;
+  color: #06120a !important;
+  border-color: rgba(255,255,255,.10) !important;
+  box-shadow: 0 0 28px rgba(25,230,111,.20), inset 0 1px 0 rgba(255,255,255,.22) !important;
+}
+
+.btn-customer-care {
+  color: #fff !important;
+}
+
+.btn-action {
+  color: #fff !important;
+}
+
+.btn-customer-care:hover,
+.btn-action:hover,
+.btn-register-main:hover {
+  box-shadow: 0 0 36px rgba(25,230,111,.34), inset 0 1px 0 rgba(255,255,255,.25) !important;
+}
+
+/* Balance cards */
+.card {
+  border-color: rgba(139,92,246,.20);
+  background: linear-gradient(145deg, rgba(22,14,43,.98), rgba(10,6,25,.98));
+}
+
+.card:first-child .card-title {
+  color: #a78bfa;
+}
+
+.card:nth-child(2) .card-title {
+  color: var(--green);
+}
+
+/* Guest cards */
+.mzungu-card {
+  border-color: rgba(139,92,246,.20);
+  background: linear-gradient(145deg, rgba(20,13,39,.97), rgba(9,6,22,.99));
+}
+
+.mzungu-card:hover {
+  border-color: rgba(167,139,250,.34);
+  box-shadow: 0 18px 38px rgba(0,0,0,.30), 0 0 24px rgba(124,58,237,.09);
+}
+
+.avatar {
+  border-color: rgba(139,92,246,.42);
+  box-shadow: 0 0 0 4px rgba(139,92,246,.055), 0 8px 22px rgba(0,0,0,.35);
+}
+
+/* Chat CTA stays green */
+.btn-chat {
+  border-color: var(--green);
+  color: var(--green);
+  background: rgba(25,230,111,.035);
+}
+
+/* Support / lower cards */
+.support-section-card,
+.reviews-section-card,
+.extra-card {
+  background: linear-gradient(145deg, rgba(18,11,36,.97), rgba(8,5,19,.99));
+  border-color: rgba(139,92,246,.20);
+}
+
+/* Purple secondary/group accent */
+.group-btn {
+  background: rgba(93,54,137,.13);
+  border-color: rgba(153,95,226,.28);
+}
+
+.group-btn .btn-icon,
+.group-btn .btn-title {
+  color: #b98aff;
+}
+
+/* Transaction cards */
+.transaction-item {
+  background: rgba(7,4,17,.82);
+  border-color: rgba(139,92,246,.13);
+}
+
+/* Keep verification/blue informational elements blue where the HTML uses them.
+   This override does not recolor those elements. */

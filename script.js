@@ -3317,12 +3317,12 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Weka namba yako hapa chini (mfano: 2557XXXXXXXX)
   const phoneNumber = "+255637848016"; 
-  const message = encodeURIComponent("Habari boss, naomba unielekeze kuhusu LughaPay");
+  const message = encodeURIComponent("Habari boss, naomba unielekeze kuhusu ChatPesa");
 
   customerCareBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
+      window.open(`https://wa.link/uqvu6x`, '_blank');
     });
   });
 });

@@ -2985,7 +2985,7 @@ function openWhatsAppSupport() {
 
 function openWhatsAppDirect() {
   window.open(
-    "https://wa.me/+255637848016",
+    "https://wa.link/uqvu6x",
     "_blank"
   );
 }

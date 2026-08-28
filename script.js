@@ -63,9 +63,9 @@ const wazunguData = [
     style: "friendly",
     interests: ["safari", "chakula", "Tanzania"],
     openings: [
-      "Habari 😊 Mimi ni Henry. Nimekuwa nikijifunza Kiswahili hivi karibuni. Siku yako imeanzaje?",
-      "Hujambo! Mimi naitwa Henry. Nafurahi kupata mtu wa kuzungumza naye kwa Kiswahili 😊 Unatokea wapi?",
-      "Mambo! 😄 Mimi ni Henry. Bado najifunza Kiswahili, kwa hiyo ningependa sana kuzungumza nawe."
+      "Habari  Mimi ni Henry. Nimekuwa nikijifunza Kiswahili hivi karibuni. Siku yako imeanzaje?",
+      "Hujambo! Mimi naitwa Henry. Nafurahi kupata mtu wa kuzungumza naye kwa Kiswahili  Unatokea wapi?",
+      "Mambo!  Mimi ni Henry. Bado najifunza Kiswahili, kwa hiyo ningependa sana kuzungumza nawe."
     ]
   },
 
@@ -79,9 +79,9 @@ const wazunguData = [
     style: "social",
     interests: ["muziki", "utamaduni", "chakula"],
     openings: [
-      "Mambo! 😄 Mimi ni Sarah. Leo nimekuja kujifunza Kiswahili na kuongea kidogo. Unaendeleaje?",
-      "Habari yako? Mimi ni Sarah 😊 Niambie, siku yako iko vipi?",
-      "Hey 😊 Naitwa Sarah. Nimefurahi kuwa hapa. Wewe huwa unapenda kufanya nini ukiwa free?"
+      "Mambo!  Mimi ni Sarah. Leo nimekuja kujifunza Kiswahili na kuongea kidogo. Unaendeleaje?",
+      "Habari yako? Mimi ni Sarah  Niambie, siku yako iko vipi?",
+      "Hey  Naitwa Sarah. Nimefurahi kuwa hapa. Wewe huwa unapenda kufanya nini ukiwa free?"
     ]
   },
 
@@ -95,9 +95,9 @@ const wazunguData = [
     style: "curious",
     interests: ["lugha", "safari", "kazi"],
     openings: [
-      "Hujambo 😊 Mimi ni Oliver. Kiswahili changu bado hakijawa kizuri sana, lakini najitahidi. Unaendeleaje?",
+      "Hujambo  Mimi ni Oliver. Kiswahili changu bado hakijawa kizuri sana, lakini najitahidi. Unaendeleaje?",
       "Habari! Naitwa Oliver. Ningependa kujifunza Kiswahili kupitia mazungumzo ya kawaida. Unaitwa nani?",
-      "Mambo 😊 Mimi ni Oliver. Niambie kitu kimoja kuhusu wewe."
+      "Mambo  Mimi ni Oliver. Niambie kitu kimoja kuhusu wewe."
     ]
   },
 
@@ -111,9 +111,9 @@ const wazunguData = [
     style: "nature",
     interests: ["nature", "wildlife", "safari"],
     openings: [
-      "Habari 😊 Mimi ni Emma. Nimekuwa nikisoma kuhusu Tanzania sana. Unaishi sehemu gani?",
+      "Habari  Mimi ni Emma. Nimekuwa nikisoma kuhusu Tanzania sana. Unaishi sehemu gani?",
       "Hujambo! Mimi naitwa Emma. Tanzania inanivutia sana. Leo unaendeleaje?",
-      "Mambo! 😄 Ningependa kujua zaidi kuhusu maisha ya Tanzania. Wewe unatokea wapi?"
+      "Mambo!  Ningependa kujua zaidi kuhusu maisha ya Tanzania. Wewe unatokea wapi?"
     ]
   },
 
@@ -127,9 +127,9 @@ const wazunguData = [
     style: "business",
     interests: ["biashara", "safari", "kazi"],
     openings: [
-      "Habari yako? Mimi ni Lucas 😊 Nimeanza kujifunza Kiswahili kwa sababu napenda Tanzania. Unafanya kazi gani?",
+      "Habari yako? Mimi ni Lucas  Nimeanza kujifunza Kiswahili kwa sababu napenda Tanzania. Unafanya kazi gani?",
       "Mambo! Naitwa Lucas. Ningependa kuzoea mazungumzo ya kawaida ya Kiswahili. Unaendeleaje?",
-      "Hujambo 😊 Mimi ni Lucas. Wewe ni mtu wa biashara au unasoma?"
+      "Hujambo  Mimi ni Lucas. Wewe ni mtu wa biashara au unasoma?"
     ]
   },
 
@@ -144,8 +144,8 @@ const wazunguData = [
     interests: ["muziki", "Bongo Flava", "utamaduni"],
     openings: [
       "Mambo! 🎵 Mimi ni Sophia. Nimekuwa nikisikiliza muziki wa Tanzania hivi karibuni. Wewe unapenda muziki?",
-      "Habari 😊 Naitwa Sophia. Leo ningependa tuzungumzie vitu vya kawaida. Unapenda kufanya nini?",
-      "Hujambo! Mimi ni Sophia. Nimefurahi kukuona hapa 😄 Siku yako imekuwaje?"
+      "Habari  Naitwa Sophia. Leo ningependa tuzungumzie vitu vya kawaida. Unapenda kufanya nini?",
+      "Hujambo! Mimi ni Sophia. Nimefurahi kukuona hapa  Siku yako imekuwaje?"
     ]
   },
 
@@ -159,9 +159,9 @@ const wazunguData = [
     style: "travel",
     interests: ["Arusha", "safari", "technology"],
     openings: [
-      "Hujambo! Mimi ni Liam 😊 Nimekuwa nikijifunza Kiswahili kwa ajili ya safari yangu Tanzania. Unaishi wapi?",
+      "Hujambo! Mimi ni Liam  Nimekuwa nikijifunza Kiswahili kwa ajili ya safari yangu Tanzania. Unaishi wapi?",
       "Habari yako? Naitwa Liam. Ningependa sana kujua maisha ya kila siku Tanzania yakoje.",
-      "Mambo! 😄 Mimi ni Liam. Nimepanga kutembelea Tanzania siku moja. Leo unaendeleaje?"
+      "Mambo!  Mimi ni Liam. Nimepanga kutembelea Tanzania siku moja. Leo unaendeleaje?"
     ]
   },
 
@@ -175,9 +175,9 @@ const wazunguData = [
     style: "language",
     interests: ["lugha", "shule", "muziki"],
     openings: [
-      "Habari 😊 Mimi ni Ava. Napenda sana kujifunza lugha mpya. Kiswahili ni lugha yangu mpya sasa!",
-      "Hujambo! Naitwa Ava. Unaweza kunifundisha neno moja la Kiswahili leo? 😄",
-      "Mambo! Mimi ni Ava 😊 Wewe ulianza kujifunza mambo gani mapya hivi karibuni?"
+      "Habari  Mimi ni Ava. Napenda sana kujifunza lugha mpya. Kiswahili ni lugha yangu mpya sasa!",
+      "Hujambo! Naitwa Ava. Unaweza kunifundisha neno moja la Kiswahili leo? ",
+      "Mambo! Mimi ni Ava  Wewe ulianza kujifunza mambo gani mapya hivi karibuni?"
     ]
   },
 
@@ -191,9 +191,9 @@ const wazunguData = [
     style: "helpful",
     interests: ["kazi", "community", "Tanzania"],
     openings: [
-      "Habari! Mimi ni Noah 😊 Nafanya kazi ya kujitolea na ninajifunza Kiswahili. Unaishi wapi?",
+      "Habari! Mimi ni Noah  Nafanya kazi ya kujitolea na ninajifunza Kiswahili. Unaishi wapi?",
       "Hujambo. Naitwa Noah. Ningependa kujifunza maneno ambayo watu hutumia kila siku.",
-      "Mambo 😊 Mimi ni Noah. Unaendeleaje leo?"
+      "Mambo  Mimi ni Noah. Unaendeleaje leo?"
     ]
   },
 
@@ -207,8 +207,8 @@ const wazunguData = [
     style: "food",
     interests: ["chakula", "kupika", "safari"],
     openings: [
-      "Mambo! 😄 Mimi ni Mia. Nina swali moja muhimu: unapenda chakula gani?",
-      "Habari 😊 Naitwa Mia. Nimekuwa nikisikia mengi kuhusu chakula cha Tanzania. Wewe unapenda kula nini?",
+      "Mambo!  Mimi ni Mia. Nina swali moja muhimu: unapenda chakula gani?",
+      "Habari  Naitwa Mia. Nimekuwa nikisikia mengi kuhusu chakula cha Tanzania. Wewe unapenda kula nini?",
       "Hujambo! Mimi ni Mia. Leo nimekuja kwa mazungumzo mafupi ya Kiswahili."
     ]
   },
@@ -223,7 +223,7 @@ const wazunguData = [
     style: "adventure",
     interests: ["Kilimanjaro", "safari", "sports"],
     openings: [
-      "Habari 😊 Mimi ni Ethan. Nimepanga kuja Tanzania kwa ajili ya Kilimanjaro. Unaishi wapi?",
+      "Habari  Mimi ni Ethan. Nimepanga kuja Tanzania kwa ajili ya Kilimanjaro. Unaishi wapi?",
       "Mambo! Naitwa Ethan. Mimi napenda sana adventure. Wewe unapenda kusafiri?",
       "Hujambo! Mimi ni Ethan. Unaendeleaje? Natumaini siku yako iko vizuri."
     ]
@@ -239,9 +239,9 @@ const wazunguData = [
     style: "friendly",
     interests: ["marafiki", "chakula", "lugha"],
     openings: [
-      "Hujambo 😊 Mimi ni Isabella. Nimefurahi kupata mtu wa kuongea naye. Unaitwa nani?",
+      "Hujambo  Mimi ni Isabella. Nimefurahi kupata mtu wa kuongea naye. Unaitwa nani?",
       "Habari yako? Mimi naitwa Isabella. Leo unaendeleaje?",
-      "Mambo 😄 Ningependa kujifunza Kiswahili cha mazungumzo ya kawaida. Ukoje?"
+      "Mambo  Ningependa kujifunza Kiswahili cha mazungumzo ya kawaida. Ukoje?"
     ]
   },
 
@@ -256,7 +256,7 @@ const wazunguData = [
     interests: ["lugha", "elimu", "historia"],
     openings: [
       "Habari. Mimi ni James. Ninavutiwa sana na lugha ya Kiswahili. Wewe umejifunza lugha gani nyingine?",
-      "Hujambo 😊 Naitwa James. Ningependa kuelewa zaidi kuhusu matumizi ya Kiswahili cha kila siku.",
+      "Hujambo  Naitwa James. Ningependa kuelewa zaidi kuhusu matumizi ya Kiswahili cha kila siku.",
       "Mambo! Mimi ni James. Unaendeleaje leo?"
     ]
   },
@@ -271,8 +271,8 @@ const wazunguData = [
     style: "playful",
     interests: ["misemo", "lugha", "muziki"],
     openings: [
-      "Mambo! 😄 Mimi ni Charlotte. Nimekuwa nikijifunza misemo ya Kiswahili. Unajua msemo mzuri?",
-      "Habari 😊 Naitwa Charlotte. Leo unaendeleaje?",
+      "Mambo!  Mimi ni Charlotte. Nimekuwa nikijifunza misemo ya Kiswahili. Unajua msemo mzuri?",
+      "Habari  Naitwa Charlotte. Leo unaendeleaje?",
       "Hujambo! Mimi ni Charlotte. Nataka tuongee kama marafiki wa kawaida."
     ]
   },
@@ -287,7 +287,7 @@ const wazunguData = [
     style: "learner",
     interests: ["lugha", "kazi", "safari"],
     openings: [
-      "Habari 😊 Mimi ni Benjamin. Lengo langu ni kuweza kuzungumza Kiswahili vizuri. Unaishi wapi?",
+      "Habari  Mimi ni Benjamin. Lengo langu ni kuweza kuzungumza Kiswahili vizuri. Unaishi wapi?",
       "Hujambo! Naitwa Benjamin. Unaweza kuongea Kiswahili vizuri?",
       "Mambo! Mimi ni Benjamin. Nimefurahi kuongea nawe leo."
     ]
@@ -303,9 +303,9 @@ const wazunguData = [
     style: "culture",
     interests: ["utamaduni", "safari", "chakula"],
     openings: [
-      "Habari 😊 Mimi ni Amelia. Napenda sana kujifunza kuhusu tamaduni mbalimbali. Unaishi wapi?",
+      "Habari  Mimi ni Amelia. Napenda sana kujifunza kuhusu tamaduni mbalimbali. Unaishi wapi?",
       "Mambo! Naitwa Amelia. Ni kitu gani unapenda zaidi kuhusu Tanzania?",
-      "Hujambo 😄 Siku yako imeanzaje?"
+      "Hujambo  Siku yako imeanzaje?"
     ]
   },
 
@@ -319,9 +319,9 @@ const wazunguData = [
     style: "casual",
     interests: ["maisha", "kazi", "marafiki"],
     openings: [
-      "Mambo! Mimi ni Alexander 😄 Leo nataka tuongee kawaida tu. Unaendeleaje?",
+      "Mambo! Mimi ni Alexander  Leo nataka tuongee kawaida tu. Unaendeleaje?",
       "Habari yako? Naitwa Alexander. Wewe ni mtu wa aina gani ukiwa na marafiki?",
-      "Hujambo 😊 Nimefurahi kuongea nawe. Uko salama?"
+      "Hujambo  Nimefurahi kuongea nawe. Uko salama?"
     ]
   },
 
@@ -335,7 +335,7 @@ const wazunguData = [
     style: "history",
     interests: ["historia", "Zanzibar", "utamaduni"],
     openings: [
-      "Habari 😊 Mimi ni Harper. Zanzibar inanivutia sana. Umewahi kwenda huko?",
+      "Habari  Mimi ni Harper. Zanzibar inanivutia sana. Umewahi kwenda huko?",
       "Mambo! Naitwa Harper. Ningependa kujua zaidi kuhusu Tanzania.",
       "Hujambo! Leo unaendeleaje?"
     ]
@@ -352,7 +352,7 @@ const wazunguData = [
     interests: ["kazi", "biashara", "safari"],
     openings: [
       "Habari yako? Mimi ni Daniel. Najiandaa kuja Tanzania kwa kazi. Unafanya kazi gani?",
-      "Hujambo 😊 Naitwa Daniel. Ningependa kujifunza Kiswahili cha kutumia kazini.",
+      "Hujambo  Naitwa Daniel. Ningependa kujifunza Kiswahili cha kutumia kazini.",
       "Mambo! Mimi ni Daniel. Unaendeleaje leo?"
     ]
   },
@@ -367,9 +367,9 @@ const wazunguData = [
     style: "academic",
     interests: ["elimu", "lugha", "jamii"],
     openings: [
-      "Habari 😊 Mimi ni Evelyn. Napenda kujifunza kuhusu lugha na watu. Wewe unasoma au unafanya kazi?",
+      "Habari  Mimi ni Evelyn. Napenda kujifunza kuhusu lugha na watu. Wewe unasoma au unafanya kazi?",
       "Hujambo! Naitwa Evelyn. Leo ningependa kusikia kuhusu maisha yako ya kawaida.",
-      "Mambo 😄 Unaendeleaje?"
+      "Mambo  Unaendeleaje?"
     ]
   },
 
@@ -383,9 +383,9 @@ const wazunguData = [
     style: "traveler",
     interests: ["safari", "Tanzania", "chakula"],
     openings: [
-      "Hujambo! Mimi ni Matthew 😊 Nataka kujifunza jinsi watu wanavyoongea Kiswahili kila siku.",
+      "Hujambo! Mimi ni Matthew  Nataka kujifunza jinsi watu wanavyoongea Kiswahili kila siku.",
       "Habari yako? Naitwa Matthew. Unaishi mji gani?",
-      "Mambo! 😄 Siku yako imekuwaje?"
+      "Mambo!  Siku yako imekuwaje?"
     ]
   },
 
@@ -399,9 +399,9 @@ const wazunguData = [
     style: "beginner",
     interests: ["lugha", "chakula", "marafiki"],
     openings: [
-      "Habari 😊 Mimi ni Abigail. Bado ni beginner kabisa kwenye Kiswahili 😅 Unaendeleaje?",
+      "Habari  Mimi ni Abigail. Bado ni beginner kabisa kwenye Kiswahili  Unaendeleaje?",
       "Mambo! Naitwa Abigail. Unaweza kunisaidia kujifunza Kiswahili kidogo?",
-      "Hujambo 😊 Leo nataka kufanya mazoezi ya Kiswahili."
+      "Hujambo  Leo nataka kufanya mazoezi ya Kiswahili."
     ]
   },
 
@@ -415,9 +415,9 @@ const wazunguData = [
     style: "technology",
     interests: ["technology", "kazi", "elimu"],
     openings: [
-      "Mambo! Mimi ni Henry Jr. 😊 Nafanya project inayohusisha Tanzania. Wewe unafanya kazi gani?",
+      "Mambo! Mimi ni Henry Jr.  Nafanya project inayohusisha Tanzania. Wewe unafanya kazi gani?",
       "Habari! Naitwa Henry Jr. Ningependa kujua zaidi kuhusu kazi za vijana Tanzania.",
-      "Hujambo 😊 Unaendeleaje leo?"
+      "Hujambo  Unaendeleaje leo?"
     ]
   },
 
@@ -431,7 +431,7 @@ const wazunguData = [
     style: "culture",
     interests: ["utamaduni", "familia", "chakula"],
     openings: [
-      "Habari 😊 Mimi ni Emily. Ninapenda sana kujua jinsi maisha ya kila siku yalivyo Tanzania.",
+      "Habari  Mimi ni Emily. Ninapenda sana kujua jinsi maisha ya kila siku yalivyo Tanzania.",
       "Mambo! Naitwa Emily. Familia ni muhimu sana kwangu. Wewe unaishi na familia yako?",
       "Hujambo! Unaendeleaje?"
     ]
@@ -448,7 +448,7 @@ const wazunguData = [
     interests: ["muziki", "Bongo Flava", "creative"],
     openings: [
       "Mambo! 🎵 Mimi ni Jackson. Mimi ni mwanamuziki na napenda sana muziki wa Tanzania.",
-      "Habari 😊 Naitwa Jackson. Wewe unasikiliza muziki wa aina gani?",
+      "Habari  Naitwa Jackson. Wewe unasikiliza muziki wa aina gani?",
       "Hujambo! Leo nataka kujua muziki unaoupenda."
     ]
   },
@@ -463,9 +463,9 @@ const wazunguData = [
     style: "volunteer",
     interests: ["community", "Tanzania", "travel"],
     openings: [
-      "Habari 😊 Mimi ni Ella. Najiandaa kuja Tanzania kwa kazi ya kujitolea. Unaishi wapi?",
+      "Habari  Mimi ni Ella. Najiandaa kuja Tanzania kwa kazi ya kujitolea. Unaishi wapi?",
       "Mambo! Naitwa Ella. Ningependa kujua zaidi kuhusu maisha ya kawaida Tanzania.",
-      "Hujambo 😄 Unaendeleaje leo?"
+      "Hujambo  Unaendeleaje leo?"
     ]
   },
 
@@ -479,9 +479,9 @@ const wazunguData = [
     style: "language",
     interests: ["lugha", "muziki", "culture"],
     openings: [
-      "Hujambo 😊 Mimi ni Sebastian. Napenda sana jinsi Kiswahili kinavyosikika.",
+      "Hujambo  Mimi ni Sebastian. Napenda sana jinsi Kiswahili kinavyosikika.",
       "Habari! Naitwa Sebastian. Unaitwa nani?",
-      "Mambo 😄 Leo unaendeleaje?"
+      "Mambo  Leo unaendeleaje?"
     ]
   },
 
@@ -495,9 +495,9 @@ const wazunguData = [
     style: "travel",
     interests: ["Zanzibar", "beach", "travel"],
     openings: [
-      "Habari 😊 Mimi ni Aria. Zanzibar ni sehemu ninayotamani sana kutembelea.",
+      "Habari  Mimi ni Aria. Zanzibar ni sehemu ninayotamani sana kutembelea.",
       "Mambo! Naitwa Aria. Umewahi kwenda Zanzibar?",
-      "Hujambo 😄 Unaishi wapi?"
+      "Hujambo Unaishi wapi?"
     ]
   },
 
@@ -511,9 +511,9 @@ const wazunguData = [
     style: "friendly",
     interests: ["marafiki", "lugha", "chakula"],
     openings: [
-      "Mambo! 😄 Mimi ni Jack. Nimefurahi sana kupata mtu wa kuongea naye.",
+      "Mambo!  Mimi ni Jack. Nimefurahi sana kupata mtu wa kuongea naye.",
       "Habari yako? Naitwa Jack. Uko salama?",
-      "Hujambo 😊 Leo unaendeleaje?"
+      "Hujambo  Leo unaendeleaje?"
     ]
   },
 
@@ -527,9 +527,9 @@ const wazunguData = [
     style: "wildlife",
     interests: ["wildlife", "safari", "nature"],
     openings: [
-      "Habari 😊 Mimi ni Scarlett. Nimekuwa nikitamani kutembelea mbuga za wanyama Tanzania.",
+      "Habari  Mimi ni Scarlett. Nimekuwa nikitamani kutembelea mbuga za wanyama Tanzania.",
       "Mambo! Naitwa Scarlett. Wewe unapenda safari?",
-      "Hujambo 😄 Nimefurahi kuongea nawe leo."
+      "Hujambo  Nimefurahi kuongea nawe leo."
     ]
   }
 
@@ -2985,7 +2985,7 @@ function openWhatsAppSupport() {
 
 function openWhatsAppDirect() {
   window.open(
-    "https://wa.me/255711596702",
+    "https://wa.me/+255637848016",
     "_blank"
   );
 }
@@ -3316,7 +3316,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const customerCareBtns = document.querySelectorAll('.btn-customer-care');
   
   // Weka namba yako hapa chini (mfano: 2557XXXXXXXX)
-  const phoneNumber = "255711596702"; 
+  const phoneNumber = "+255637848016"; 
   const message = encodeURIComponent("Habari boss, naomba unielekeze kuhusu LughaPay");
 
   customerCareBtns.forEach(btn => {

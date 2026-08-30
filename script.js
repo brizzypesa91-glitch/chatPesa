@@ -3311,18 +3311,42 @@ document.addEventListener(
   }
 );
 
-// KODI YA KULAZIMISHA BUTTON ZA CUSTOMER CARE IFUNGUE WHATSAPP NA UJUMBE
+// CUSTOMER CARE HEADER + SINGLE FLOATING ASSISTANCE BUTTON
 document.addEventListener('DOMContentLoaded', () => {
   const customerCareBtns = document.querySelectorAll('.btn-customer-care');
-  
-  // Weka namba yako hapa chini (mfano: 2557XXXXXXXX)
-  const phoneNumber = "+255667595067"; 
-  const message = encodeURIComponent("Habari boss, naomba unielekeze kuhusu ChatPesa");
+  const message = encodeURIComponent('Habari boss, naomba unielekeze kuhusu ChatPesa');
 
   customerCareBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       window.open(`https://wa.me/255667595067?text=${message}`, '_blank');
     });
+  });
+
+  const openBtn = document.getElementById('customerAssistanceBtn');
+  const modal = document.getElementById('customerSupportModal');
+  const closeBtn = document.getElementById('closeCustomerSupport');
+  const closeTargets = document.querySelectorAll('[data-close-support]');
+
+  if (!openBtn || !modal) return;
+
+  const openSupport = () => {
+    modal.hidden = false;
+    openBtn.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('customer-support-open');
+  };
+
+  const closeSupport = () => {
+    modal.hidden = true;
+    openBtn.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('customer-support-open');
+  };
+
+  openBtn.addEventListener('click', openSupport);
+  closeBtn?.addEventListener('click', closeSupport);
+  closeTargets.forEach(target => target.addEventListener('click', closeSupport));
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && !modal.hidden) closeSupport();
   });
 });

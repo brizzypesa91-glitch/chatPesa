@@ -2137,3 +2137,113 @@ body {
 
 /* Keep verification/blue informational elements blue where the HTML uses them.
    This override does not recolor those elements. */
+
+/* =========================================================
+   CUSTOMER ASSISTANCE - SINGLE RIGHT FLOATING BUTTON
+   ========================================================= */
+.customer-assistance-float {
+  position: fixed !important;
+  right: 18px !important;
+  bottom: 92px !important;
+  width: 62px !important;
+  height: 62px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 50% !important;
+  display: grid !important;
+  place-items: center !important;
+  cursor: pointer !important;
+  z-index: 100000 !important;
+  background: #25D366 !important;
+  color: #fff !important;
+  box-shadow: 0 10px 28px rgba(0,0,0,.38), 0 0 0 0 rgba(37,211,102,.45) !important;
+  animation: customerWhatsappPulse 2.4s infinite !important;
+  isolation: isolate;
+}
+
+/* Animated green glow/ring around the floating WhatsApp button */
+.customer-assistance-float::before {
+  content: "";
+  position: absolute;
+  inset: -7px;
+  border-radius: 50%;
+  border: 2px solid rgba(37, 211, 102, 0.72);
+  box-shadow:
+    0 0 8px rgba(37, 211, 102, 0.85),
+    0 0 20px rgba(37, 211, 102, 0.58),
+    0 0 38px rgba(37, 211, 102, 0.32);
+  pointer-events: none;
+  z-index: -1;
+  animation: whatsappGlowRing 2s ease-out infinite;
+}
+
+.customer-assistance-float::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: rgba(37, 211, 102, 0.18);
+  filter: blur(7px);
+  pointer-events: none;
+  z-index: -1;
+  animation: whatsappGlowBreath 1.8s ease-in-out infinite;
+}
+
+@keyframes whatsappGlowRing {
+  0% {
+    transform: scale(0.92);
+    opacity: 0.95;
+  }
+  65%, 100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+@keyframes whatsappGlowBreath {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.96);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.08);
+  }
+}
+
+.customer-assistance-icon { display:grid; place-items:center; width:34px; height:34px; }
+.customer-assistance-icon svg { width:34px; height:34px; fill:currentColor; }
+.customer-assistance-float:hover { transform: translateY(-3px) scale(1.04); }
+@keyframes customerWhatsappPulse {
+  0%,100% { box-shadow:0 10px 28px rgba(0,0,0,.38),0 0 0 0 rgba(37,211,102,.42); }
+  50% { box-shadow:0 10px 28px rgba(0,0,0,.38),0 0 0 10px rgba(37,211,102,0); }
+}
+.customer-support-overlay { position:fixed; inset:0; z-index:100001; display:grid; place-items:center; padding:20px; }
+.customer-support-overlay[hidden] { display:none !important; }
+.customer-support-backdrop { position:absolute; inset:0; background:rgba(4,8,18,.70); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); }
+.customer-support-modal { position:relative; width:min(100%,500px); padding:34px 22px 20px; border-radius:30px; border:1px solid rgba(123,151,207,.22); background:linear-gradient(145deg,rgba(20,27,49,.99),rgba(9,16,31,.99)); box-shadow:0 28px 80px rgba(0,0,0,.58); color:#fff; animation:customerModalIn .22s ease-out; }
+@keyframes customerModalIn { from{opacity:0;transform:translateY(12px) scale(.97)} to{opacity:1;transform:translateY(0) scale(1)} }
+.customer-support-close { position:absolute; top:16px; right:17px; width:34px; height:34px; border:0; border-radius:50%; background:rgba(255,255,255,.07); color:#9eacc1; font-size:27px; line-height:1; cursor:pointer; }
+.customer-support-icon { width:52px; height:52px; margin:0 auto 12px; display:grid; place-items:center; border-radius:50%; color:#182238; background:#fff; font-size:25px; }
+.customer-support-modal h3 { text-align:center; font-size:clamp(21px,5.5vw,27px); line-height:1.15; font-weight:900; letter-spacing:-.5px; }
+.customer-support-modal>p { margin:8px auto 22px; max-width:360px; text-align:center; color:#8f9db2; font-size:13px; line-height:1.45; }
+.customer-support-options { display:flex; flex-direction:column; gap:12px; }
+.customer-support-option { display:grid; grid-template-columns:48px 1fr 22px; align-items:center; gap:12px; min-height:78px; padding:13px 14px; border:1px solid rgba(120,147,198,.20); border-radius:19px; text-decoration:none; color:#fff; background:rgba(255,255,255,.025); transition:transform .18s ease,border-color .18s ease,background .18s ease; }
+.customer-support-option:hover { transform:translateY(-1px); background:rgba(255,255,255,.05); border-color:rgba(37,211,102,.36); }
+.option-icon { width:48px; height:48px; display:grid; place-items:center; border-radius:15px; font-size:23px; }
+.whatsapp-option-icon { color:#25D366; background:rgba(37,211,102,.11); }
+.whatsapp-option-icon svg { width:28px; height:28px; fill:currentColor; }
+.group-option-icon { background:rgba(117,87,255,.12); }
+.option-copy { min-width:0; }
+.option-copy strong { display:block; font-size:14px; font-weight:850; }
+.option-copy small { display:block; margin-top:4px; color:#8796ad; font-size:11px; line-height:1.35; }
+.option-arrow { color:#91a1b8; font-size:23px; }
+.customer-support-cancel { width:100%; min-height:50px; margin-top:12px; border:1px solid rgba(120,147,198,.16); border-radius:17px; background:rgba(255,255,255,.025); color:#fff; font-size:14px; font-weight:800; cursor:pointer; }
+@media (max-width:600px) {
+  .customer-assistance-float { right:16px !important; bottom:88px !important; width:58px !important; height:58px !important; }
+  .customer-assistance-icon,.customer-assistance-icon svg { width:31px; height:31px; }
+  .customer-support-overlay { padding:14px; }
+  .customer-support-modal { padding:32px 14px 16px; border-radius:27px; }
+  .customer-support-option { grid-template-columns:44px 1fr 18px; gap:10px; min-height:74px; padding:11px; }
+  .option-icon { width:44px; height:44px; }
+}

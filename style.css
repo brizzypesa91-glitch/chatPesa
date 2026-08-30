@@ -2247,3 +2247,46 @@ body {
   .customer-support-option { grid-template-columns:44px 1fr 18px; gap:10px; min-height:74px; padding:11px; }
   .option-icon { width:44px; height:44px; }
 }
+
+/* =========================================================
+   FULL-SCREEN CHAT ROOM
+   Chat ikianza baada ya kuchagua muda, ichukue screen yote.
+   ========================================================= */
+#chatRoomModal {
+  padding: 0 !important;
+  align-items: stretch !important;
+  justify-content: stretch !important;
+}
+
+#chatRoomModal .chat-room-card {
+  width: 100vw !important;
+  max-width: none !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  min-height: 100vh !important;
+  min-height: 100dvh !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+}
+
+#chatRoomModal .chat-header {
+  flex: 0 0 auto;
+  padding-top: max(15px, env(safe-area-inset-top)) !important;
+}
+
+#chatRoomModal .chat-input-area {
+  flex: 0 0 auto;
+  padding-bottom: max(11px, env(safe-area-inset-bottom)) !important;
+}
+
+@media (max-width: 600px) {
+  #chatRoomModal .chat-room-card {
+    width: 100vw !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+  }
+}

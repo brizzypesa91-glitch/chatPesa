@@ -3316,13 +3316,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const customerCareBtns = document.querySelectorAll('.btn-customer-care');
   
   // Weka namba yako hapa chini (mfano: 2557XXXXXXXX)
-  const phoneNumber = "+255637848016"; 
+  const phoneNumber = "+255667595067"; 
   const message = encodeURIComponent("Habari boss, naomba unielekeze kuhusu ChatPesa");
 
   customerCareBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      window.open(`https://wa.link/uqvu6x`, '_blank');
+      window.open(`https://wa.me/255667595067?text=${message}`, '_blank');
     });
   });
 });

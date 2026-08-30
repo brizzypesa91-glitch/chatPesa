@@ -83,6 +83,7 @@ a {
    HEADER
    ========================================================= */
 
+.chatpesa-header,
 .lughapay-header {
   display: flex;
   align-items: center;
@@ -2288,5 +2289,235 @@ body {
     width: 100vw !important;
     height: 100dvh !important;
     min-height: 100dvh !important;
+  }
+}
+
+
+/* =========================================================
+   CHAT REGISTRATION POPUP / MESSAGE LIMIT
+   The chat itself stays sharp and usable; only the backdrop
+   behind this popup is blurred, matching the reference design.
+   ========================================================= */
+.chat-register-wall {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+
+.chat-register-wall[hidden] {
+  display: none !important;
+}
+
+.chat-register-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(3, 8, 18, .68);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.chat-register-card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 625px);
+  padding: 38px 28px 25px;
+  border-radius: 30px;
+  background: #fff;
+  color: #111827;
+  box-shadow: 0 28px 90px rgba(0,0,0,.58);
+  text-align: center;
+  animation: chatRegisterIn .2s ease-out;
+}
+
+@keyframes chatRegisterIn {
+  from { opacity: 0; transform: translateY(12px) scale(.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.chat-register-close {
+  position: absolute;
+  top: 14px;
+  right: 15px;
+  width: 38px;
+  height: 38px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #64748b;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.chat-register-icon {
+  width: 68px;
+  height: 68px;
+  margin: 0 auto 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 21px;
+  background: linear-gradient(145deg, #e9f8ff, #dfffea);
+  font-size: 31px;
+  box-shadow: 0 8px 25px rgba(0,174,255,.13);
+}
+
+.chat-register-card h3 {
+  margin: 0;
+  font-size: clamp(22px, 5.4vw, 31px);
+  line-height: 1.15;
+  font-weight: 900;
+  letter-spacing: -.6px;
+}
+
+.chat-register-card p {
+  max-width: 500px;
+  margin: 14px auto 27px;
+  color: #526176;
+  font-size: clamp(14px, 3.7vw, 17px);
+  line-height: 1.55;
+  font-weight: 600;
+}
+
+.chat-register-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 62px;
+  width: 100%;
+  border-radius: 19px;
+  text-decoration: none;
+  background: linear-gradient(100deg, #00c879, #00f58a);
+  color: #03140e;
+  font-size: 17px;
+  font-weight: 900;
+  box-shadow: 0 8px 28px rgba(0,245,138,.24);
+  transition: transform .18s ease, box-shadow .18s ease;
+}
+
+.chat-register-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 11px 34px rgba(0,245,138,.34);
+}
+
+.chat-register-back {
+  width: 100%;
+  min-height: 58px;
+  margin-top: 13px;
+  border: 1px solid rgba(78,124,188,.22);
+  border-radius: 19px;
+  background: #fff;
+  color: #182238;
+  font-size: 16px;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.chat-register-back:hover {
+  background: #f6f9fc;
+}
+
+@media (max-width: 600px) {
+  .chat-register-wall { padding: 16px; }
+  .chat-register-card {
+    width: 100%;
+    padding: 38px 16px 18px;
+    border-radius: 27px;
+  }
+  .chat-register-icon { width: 62px; height: 62px; margin-bottom: 17px; }
+  .chat-register-card p { margin-bottom: 22px; font-size: 14px; }
+  .chat-register-btn { min-height: 60px; font-size: 16px; }
+  .chat-register-back { min-height: 55px; font-size: 15px; }
+}
+
+
+/* =========================================================
+   CHAT HEADER + WHATSAPP-STYLE TYPING
+   ========================================================= */
+.chatpesa-header,
+.lughapay-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.chatpesa-header .header-right,
+.lughapay-header .header-right {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.chatpesa-header .online-status,
+.lughapay-header .online-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 15px;
+  white-space: nowrap;
+}
+
+.online-status.is-typing {
+  color: var(--green);
+  font-weight: 700;
+}
+
+.typing-label {
+  font-size: 10px;
+  text-transform: lowercase;
+}
+
+.typing-dots {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  height: 12px;
+}
+
+.typing-dots i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: .35;
+  animation: chatTypingDot 1.15s infinite ease-in-out;
+}
+
+.typing-dots i:nth-child(2) { animation-delay: .16s; }
+.typing-dots i:nth-child(3) { animation-delay: .32s; }
+
+@keyframes chatTypingDot {
+  0%, 60%, 100% { transform: translateY(0); opacity: .3; }
+  30% { transform: translateY(-3px); opacity: 1; }
+}
+
+/* Registration wall remains above the chat; the input itself is never blurred. */
+.chat-register-wall {
+  z-index: 1000001;
+}
+
+.chat-register-backdrop {
+  background: rgba(3, 8, 18, .70);
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+}
+
+.chat-register-card {
+  width: min(100%, 610px);
+}
+
+@media (max-width: 600px) {
+  .chatpesa-header,
+  .lughapay-header {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+
+  .chatpesa-header .header-right,
+  .lughapay-header .header-right {
+    gap: 7px;
   }
 }

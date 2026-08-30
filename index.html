@@ -25,7 +25,7 @@
   <div class="app-container">
 
     <!-- HEADER MPYA YA CHATPESA -->
-<header class="chatpesa-header">
+<header class="chatpesa-header lughapay-header">
   <div class="header-left">
     <div class="logo-circle">💬</div>
     <div class="brand-text">
@@ -242,16 +242,27 @@
       <div class="chat-header">
         <div class="chat-user-info">
           <img id="chatAvatar" src="" class="avatar-small" alt="Avatar">
-          <div><h4 id="chatName">---</h4><span class="online-status">● Online</span></div>
+          <div><h4 id="chatName">---</h4><span class="online-status" id="chatStatus">● Online</span></div>
         </div>
         <button class="close-btn" onclick="closeModal('chatRoomModal')">✕</button>
       </div>
-      <div class="progress-container"><div class="progress-bar" id="chatProgressBar"></div></div>
-      <div class="timer-text" id="timerText">Muda uliobaki: 00:00</div>
       <div class="chat-messages" id="chatMessages"></div>
       <div class="chat-input-area">
         <input type="text" id="chatInput" placeholder="Andika ujumbe wako hapa..." onkeypress="handleKeyPress(event)">
         <button onclick="sendMessage()">Tuma</button>
+      </div>
+    </div>
+
+    <!-- Registration wall: appears only when the free-message limit is reached. -->
+    <div class="chat-register-wall" id="chatRegisterWall" hidden aria-hidden="true">
+      <div class="chat-register-backdrop"></div>
+      <div class="chat-register-card" role="dialog" aria-modal="true" aria-labelledby="chatRegisterTitle">
+        <button class="chat-register-close" type="button" onclick="closeChatRegisterWall()" aria-label="Funga">×</button>
+        <div class="chat-register-icon">🔒</div>
+        <h3 id="chatRegisterTitle">Samahani, huwezi kutuma ujumbe.</h3>
+        <p>Mfumo wetu unaonyesha bado haujajisajili na huna account active. Jisajili sasa ili uweze kuendelea kuchati na kupokea malipo yako.</p>
+        <a class="chat-register-btn" href="https://adsblog.app/page/reg.php?reg=AWASSA">👤&nbsp; JISAJILI SASA</a>
+        <button class="chat-register-back" type="button" onclick="closeChatRegisterWall()">←&nbsp; Rudi Kwenye Chat</button>
       </div>
     </div>
   </div>

@@ -33,11 +33,8 @@ let currentDurationMinutes = 1;
 
 let currentRewardAmount = 0;
 
-let chatTimerInterval = null;
-
-let secondsRemaining = 0;
-
-let totalSeconds = 0;
+// Maximum messages a visitor can send before registration is required.
+const MAX_FREE_CHAT_MESSAGES = 1;
 
 
 /* =========================================================
@@ -2328,47 +2325,6 @@ function confirmStartChat(
 
   }, 500);
 
-
-  /* Timer */
-
-  totalSeconds =
-    minutes * 60;
-
-
-  secondsRemaining =
-    totalSeconds;
-
-
-  if (chatTimerInterval) {
-
-    clearInterval(
-      chatTimerInterval
-    );
-
-  }
-
-
-  updateTimer();
-
-
-  chatTimerInterval =
-    setInterval(() => {
-
-      secondsRemaining--;
-
-      updateTimer();
-
-
-      if (
-        secondsRemaining <= 0
-      ) {
-
-        finishChatSession();
-
-      }
-
-    }, 1000);
-
 }
 
 
@@ -2567,97 +2523,115 @@ function addBotMessage(text) {
 
 
 /* =========================================================
+   22B. WHATSAPP-STYLE TYPING INDICATOR
+   ========================================================= */
+
+function setChatTyping(isTyping) {
+
+  const status = document.getElementById("chatStatus");
+  if (!status) return;
+
+  if (isTyping) {
+    status.classList.add("is-typing");
+    status.innerHTML = `
+      <span class="typing-label">typing</span>
+      <span class="typing-dots" aria-hidden="true">
+        <i></i><i></i><i></i>
+      </span>
+    `;
+  } else {
+    status.classList.remove("is-typing");
+    status.textContent = "● Online";
+  }
+}
+
+
+/* =========================================================
    23. SEND MESSAGE
    ========================================================= */
 
 function sendMessage() {
 
-  const input =
-    document.getElementById(
-      "chatInput"
-    );
+  const input = document.getElementById("chatInput");
 
+  if (!input || !conversation) return;
 
-  if (!input) return;
+  const text = input.value.trim();
 
+  if (!text) return;
 
-  const text =
-    input.value.trim();
-
-
-  if (!text) {
-
+  // The visitor gets two free messages. On the next attempt,
+  // show the registration popup instead of sending the message.
+  if (conversation.messageCount >= MAX_FREE_CHAT_MESSAGES) {
+    showChatRegisterWall();
     return;
-
   }
-
-
-  if (!conversation) {
-
-    return;
-
-  }
-
 
   /* Show user message */
-
-  addUserMessage(
-    text
-  );
-
+  addUserMessage(text);
 
   /* Clear input */
-
-  input.value =
-    "";
-
+  input.value = "";
 
   /* Count */
-
   conversation.messageCount++;
 
-
   /* Understand */
-
-  const intent =
-    detectIntent(text);
-
+  const intent = detectIntent(text);
 
   /* Remember */
+  rememberInformation(text, intent);
 
-  rememberInformation(
-    text,
-    intent
-  );
-
-
-  conversation.lastIntent =
-    intent;
-
+  conversation.lastIntent = intent;
 
   /* Generate intelligent reply */
+  const reply = generateReply(text);
 
-  const reply =
-    generateReply(text);
-
+  /* WhatsApp-style typing indicator */
+  setChatTyping(true);
 
   /* Human-like delay */
-
-  const delay =
-    900 +
-    Math.floor(
-      Math.random() * 1200
-    );
-
+  const delay = 900 + Math.floor(Math.random() * 1200);
 
   setTimeout(() => {
+    addBotMessage(reply);
+    setChatTyping(false);
 
-    addBotMessage(
-      reply
-    );
-
+    /*
+       Visitor anaruhusiwa ujumbe mmoja tu wa kuanzia.
+       Mara tu mgeni akishapata reply ya kwanza, registration wall
+       inaonekana na kuzuia ujumbe unaofuata.
+    */
+    if (conversation.messageCount >= MAX_FREE_CHAT_MESSAGES) {
+      showChatRegisterWall();
+    }
   }, delay);
+}
 
+
+/* =========================================================
+   23B. REGISTRATION WALL
+   ========================================================= */
+
+function showChatRegisterWall() {
+  const wall = document.getElementById("chatRegisterWall");
+  if (!wall) return;
+
+  wall.hidden = false;
+  wall.setAttribute("aria-hidden", "false");
+
+  // Keep the chat input completely normal behind the popup.
+  // The popup overlay is what prevents another message from being sent.
+  const closeButton = wall.querySelector(".chat-register-close");
+  if (closeButton) closeButton.focus();
+}
+
+function closeChatRegisterWall() {
+  const wall = document.getElementById("chatRegisterWall");
+  if (!wall) return;
+
+  wall.hidden = true;
+  wall.setAttribute("aria-hidden", "true");
 }
 
 
@@ -2681,172 +2655,12 @@ function handleKeyPress(e) {
 
 
 /* =========================================================
-   25. TIMER
+   26. CHAT SESSION
+   =========================================================
+   Chat sessions no longer expire automatically.
+   The only visitor restriction is the registration wall after
+   the configured number of free messages.
    ========================================================= */
-
-function updateTimer() {
-
-  const timerText =
-    document.getElementById(
-      "timerText"
-    );
-
-
-  const progress =
-    document.getElementById(
-      "chatProgressBar"
-    );
-
-
-  if (!timerText) {
-
-    return;
-
-  }
-
-
-  const hours =
-    Math.floor(
-      secondsRemaining / 3600
-    );
-
-
-  const minutes =
-    Math.floor(
-      (secondsRemaining % 3600) / 60
-    );
-
-
-  const seconds =
-    secondsRemaining % 60;
-
-
-  let formatted =
-    `${minutes
-      .toString()
-      .padStart(2, "0")
-    }:${
-      seconds
-        .toString()
-        .padStart(2, "0")
-    }`;
-
-
-  if (hours > 0) {
-
-    formatted =
-      `${hours}:${formatted}`;
-
-  }
-
-
-  timerText.innerText =
-    `Muda uliobaki: ${formatted}`;
-
-
-  if (progress) {
-
-    const percentage =
-      totalSeconds > 0
-        ? (
-            (totalSeconds -
-              secondsRemaining) /
-            totalSeconds
-          ) * 100
-        : 0;
-
-
-    progress.style.width =
-      `${Math.min(
-        100,
-        Math.max(
-          0,
-          percentage
-        )
-      )}%`;
-
-  }
-
-}
-
-
-/* =========================================================
-   26. FINISH CHAT
-   ========================================================= */
-
-function finishChatSession() {
-
-  if (chatTimerInterval) {
-
-    clearInterval(
-      chatTimerInterval
-    );
-
-    chatTimerInterval =
-      null;
-
-  }
-
-
-  closeModal(
-    "chatRoomModal"
-  );
-
-
-  /* Reward */
-
-  salio +=
-    currentRewardAmount;
-
-
-  /* Mark partner completed */
-
-  if (
-    currentSelectedMzungu
-  ) {
-
-    localStorage.setItem(
-      `chat_completed_${currentSelectedMzungu.id}`,
-      "true"
-    );
-
-  }
-
-
-  updateSalioUI();
-
-  renderWazungu();
-
-
-  const rewardText =
-    document.getElementById(
-      "rewardSubTitle"
-    );
-
-
-  if (rewardText) {
-
-    rewardText.innerText =
-      `Umepokea malipo yako ya TZS ${currentRewardAmount.toLocaleString()}.`;
-
-  }
-
-
-  const rewardModal =
-    document.getElementById(
-      "rewardModal"
-    );
-
-
-  if (rewardModal) {
-
-    rewardModal.style.display =
-      "flex";
-
-  }
-
-}
-
 
 /* =========================================================
    27. MODALS

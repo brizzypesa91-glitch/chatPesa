@@ -3133,7 +3133,7 @@ document.addEventListener('DOMContentLoaded', () => {
   customerCareBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
-      window.open(`https://wa.me/255667595067?text=${message}`, '_blank');
+      window.open(`https://wa.me/255725310967?text=${message}`, '_blank');
     });
   });
 
